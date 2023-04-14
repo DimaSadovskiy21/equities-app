@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import {Error, Error500} from "assets";
+import {Error} from "assets";
 
 export const ErrorStyled = styled("div")({
   display: "grid",
@@ -12,10 +12,6 @@ export const ErrorStyled = styled("div")({
 });
 
 export const ErrorVector = styled(Error)({
-  gridArea: "i",
-});
-
-export const ErrorServerVector = styled(Error500)({
   gridArea: "i",
 });
 

@@ -1,6 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
-import { equitiesReducer, chartReducer } from "components";
+import equitiesReducer from "./reducers/equities";
+import chartReducer from "./reducers/chart";
 
 const rootReducer = combineReducers({
   equitiesReducer,

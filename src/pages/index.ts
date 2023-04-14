@@ -1,3 +1,3 @@
-export { ErrorPage } from './ErrorPage';
-export { ChartPage } from './ChartPage';
-export { EquitiesPage } from './EquitiesPage';
+export { ErrorPage } from "./ErrorPage";
+export { default as Equities } from "./Equties";
+export { default as Chart } from "./Chart";

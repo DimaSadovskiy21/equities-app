@@ -5,17 +5,14 @@ import {
   ErrorDescription,
   ErrorVector,
   ErrorTitle,
-  ErrorServerVector,
 } from "./styles";
 
 import { IErrorType } from "./types";
 
-export const Error: FC<IErrorType> = ({ err }) => {
-  return (
+export const Error: FC<IErrorType> = ({ error }) => (
     <ErrorStyled>
-      {err ? <ErrorVector /> : <ErrorServerVector />}
+      <ErrorVector />
       <ErrorTitle>Error!</ErrorTitle>
-      <ErrorDescription>{err ? err : "Work on the server or there is no data!"}</ErrorDescription>
+      <ErrorDescription>{error}</ErrorDescription>
     </ErrorStyled>
   );
-};

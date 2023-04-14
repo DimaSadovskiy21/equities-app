@@ -1,1 +1,1 @@
-export type { IFetchError } from "./IFetchError";
+export type { IEquitie } from "./equitie";

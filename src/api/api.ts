@@ -1,20 +1,18 @@
 import axios from "axios";
 
-import { IEquities } from "components";
+import { IEquitie } from "types";
 
 const instance = axios.create({
   baseURL: "https://cloud.iexapis.com/",
 });
 
 export const iexAPI = {
-  getEquities() {
-    return instance.get<IEquities[]>(
+  getEquities: () =>
+    instance.get<IEquitie[]>(
       `stable/tops?token=${process.env.REACT_APP_USER_TOKEN}`
-    );
-  },
-  getChart(symbols: string) {
-    return instance.get<IEquities[]>(
+    ),
+  getChart: (symbols: string) =>
+    instance.get<IEquitie[]>(
       `stable/tops?token=${process.env.REACT_APP_USER_TOKEN}&symbols=${symbols}`
-    );
-  },
+    ),
 };

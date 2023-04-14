@@ -1,16 +1,11 @@
-import { IEquities } from "components";
+import { IEquitie } from "types/equitie";
 
-export interface IChartProps extends IEquities {
-  size: "small" | "large";
+export interface IChartProps extends IEquitie {
+  size?: "small"; 
 }
 
 export interface IChartStyled {
-  size: "small" | "large";
+  size?: "small";
 }
 
-export interface IChartState {
-  equitie: IEquities;
-  loading: boolean;
-  error: string;
-}
 

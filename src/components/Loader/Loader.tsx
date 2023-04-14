@@ -1,5 +1,3 @@
 import { LoaderStyled } from "./styles";
 
-export const Loader = () => {
-  return <LoaderStyled />;
-};
+export const Loader = () => <LoaderStyled />;
