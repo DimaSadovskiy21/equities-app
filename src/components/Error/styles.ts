@@ -19,7 +19,6 @@ export const ErrorTitle = styled("h4")({
   gridArea: "t",
   alignSelf: "selfStart",
   fontSize: "52px",
-  
 });
 
 export const ErrorDescription = styled("p")({

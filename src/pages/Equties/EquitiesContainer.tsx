@@ -19,6 +19,7 @@ import {
 
 import { Equities } from "./Equities";
 import { MESSAGES } from "../constant";
+import { Message } from '../styles';
 
 const EquitiesContainer = () => {
   const equities = useAppSelector(equitiesSelector);
@@ -81,7 +82,7 @@ const EquitiesContainer = () => {
       scrollRef={scrollRef}
     />
   ) : (
-    <div>{MESSAGES.NO_EQUITIES}</div>
+    <Message>{MESSAGES.NO_EQUITIES}</Message>
   );
 };
 

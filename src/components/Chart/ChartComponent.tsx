@@ -15,7 +15,6 @@ import { ChartsStyled,  } from "./styles";
 ChartJS.register(PointElement, LineElement, CategoryScale, LinearScale);
 
 export const ChartComponent: FC<IChartProps> = ({symbol ,lastSalePrice, lastUpdated, size}) => {
-  
   const labels = useMemo(
     () => getChartCurrentEquitie(lastSalePrice, lastUpdated),
     [lastSalePrice, lastUpdated]

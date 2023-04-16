@@ -1,18 +1,13 @@
-import { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
-import { useAppDispatch, useAppSelector } from "hooks";
-import { Loader, Error } from "components";
-import {
-  equitieSelector,
-  errorSelector,
-  getChart,
-  isLoadingSelector,
-} from "store/reducers/chart";
+import { useAppDispatch, useAppSelector } from 'hooks';
+import { Loader, Error } from 'components';
+import { equitieSelector, errorSelector, getChart, isLoadingSelector } from 'store/reducers/chart';
 
-import { Chart } from "./Chart";
-import { MESSAGES } from "../constant";
-
+import { Chart } from './Chart';
+import { MESSAGES } from '../constant';
+import { Message } from '../styles';
 
 export const ChartContainer = () => {
   const equitie = useAppSelector(equitieSelector);
@@ -33,7 +28,13 @@ export const ChartContainer = () => {
 
   if (error) return <Error error={error} />;
 
-  return isLoading ? <Loader /> : equitie.symbol ? <Chart equitie={equitie} handler={handleGoBackClick} /> : <div>{MESSAGES.NO_EQUITIE}</div>;
+  return isLoading ? (
+    <Loader />
+  ) : equitie.symbol ? (
+    <Chart equitie={equitie} handler={handleGoBackClick} />
+  ) : (
+    <Message>{MESSAGES.NO_EQUITIE}</Message>
+  );
 };
 
 export default ChartContainer;

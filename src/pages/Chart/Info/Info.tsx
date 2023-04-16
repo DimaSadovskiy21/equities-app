@@ -1,40 +1,35 @@
-import { FC } from "react";
+import { FC } from 'react';
 
-import { getAnalogTime } from "utils";
+import { getAnalogTime } from 'utils';
 
-import { InfoItems, InfoItem, InfoStyled, InfoTitle } from "./styles";
-import { TInfo } from "./types";
-import { getCorrectKey } from "./utils";
+import { InfoItems, InfoItem, InfoStyled, InfoTitle } from './styles';
+import { TInfo } from './types';
+import { getCorrectKey } from './utils';
 
+export const Info: FC<TInfo> = (props) => (
+  <InfoStyled>
+    <InfoTitle>Equitie info</InfoTitle>
+    <InfoItems>
+      {Object.entries(props).map((value, index) => {
+        const checkIsCorrectKey = value[0] !== 'size' && value[1] !== 'small' && value[1] !== 'large';
 
+        if (value[0].includes('Updated') || value[0].includes('Time')) {
+          value[1] = getAnalogTime(value[1]);
+        }
 
-export const Info: FC<TInfo> = (props) => {
+        if (value[0].includes('Price')) {
+          value[1] += '$';
+        }
 
-  return (
-    <InfoStyled>
-          <InfoTitle>Equitie info</InfoTitle>
-      <InfoItems>
-        {Object.entries(props).map((el, index) => {
-          const checkIsCorrectKey = el[0] !== "size" && el[1] !== "small" && el[1] !== "large";
-
-          if(el[0].includes('Updated') || el[0].includes('Time')) {
-            el[1] = getAnalogTime(el[1]);
-          }
-
-          if(el[0].includes('Price')) {
-            el[1] += '$';
-          }
-
-          if (checkIsCorrectKey) {
-            return (
-              <InfoItem key={`${props.symbol}:${index}`}>
-                <span>{getCorrectKey(el[0])}:</span>
-                <span>{el[1]}</span>
-              </InfoItem>
-            );
-          }
-        })}
-      </InfoItems>
-    </InfoStyled>
-  );
-};
+        if (checkIsCorrectKey) {
+          return (
+            <InfoItem key={`${props.symbol}:${index}`}>
+              <span>{getCorrectKey(value[0])}:</span>
+              <span>{value[1]}</span>
+            </InfoItem>
+          );
+        }
+      })}
+    </InfoItems>
+  </InfoStyled>
+);

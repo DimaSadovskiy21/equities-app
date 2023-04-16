@@ -3,7 +3,7 @@ import { IEquitie } from "types";
 import { getCorrectIndex } from "utils";
 
 import { getEquities } from "./thunkCreators";
-
+import { ISetPage } from "./types";
 import { ICurrentPage, IEquitiesState, IFetchError } from "../types";
 import { setError, setIsLoading } from "../utils";
 
@@ -22,8 +22,8 @@ export const equitiesSlice = createSlice({
   initialState,
   reducers: {
     setCurrentEquities(state, action: PayloadAction<ICurrentPage>) {
-      state.currentEquities = state.equities.filter((e, i) => {
-        const correctIndex = getCorrectIndex(i);
+      state.currentEquities = state.equities.filter((_equitie, index) => {
+        const correctIndex = getCorrectIndex(index);
 
         return (
           correctIndex >= action.payload.from &&
@@ -31,17 +31,17 @@ export const equitiesSlice = createSlice({
         );
       });
     },
-    setPrevPage(state, action: PayloadAction<{ from: number; to: number }>) {
+    setPrevPage(state, action: PayloadAction<ISetPage>) {
       state.currentEquities = state.equities.filter(
-        (_e, i) => i >= action.payload.from && i <= action.payload.to
+        (_equitie, index) => index >= action.payload.from && index <= action.payload.to
       );
       state.from = action.payload.from - 10;
       state.to = action.payload.to - 10;
       state.currentPage -= 1;
     },
-    setNextPage(state, action: PayloadAction<{ from: number; to: number }>) {
+    setNextPage(state, action: PayloadAction<ISetPage>) {
       state.currentEquities = state.equities.filter(
-        (_e, i) => i >= action.payload.from && i <= action.payload.to
+        (_equitie, index) => index >= action.payload.from && index <= action.payload.to
       );
       state.from = action.payload.from + 10;
       state.to = action.payload.to + 10;
