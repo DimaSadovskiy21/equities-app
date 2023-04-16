@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ChartsStyled = styled("div")({
+export const ChartWrapper = styled("div")({
   borderRadius: "8px",
   padding: "30px",
   backgroundColor: "var(--white)",

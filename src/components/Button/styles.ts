@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ButtonStyled = styled("button")({
+export const ButtonWrapper = styled("button")({
     height: '100%',
     padding: '10px',
     border: 'none',

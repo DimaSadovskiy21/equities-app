@@ -1,3 +1,3 @@
-import { LoaderStyled } from "./styles";
+import { LoaderWrapper } from "./styles";
 
-export const Loader = () => <LoaderStyled />;
+export const Loader = () => <LoaderWrapper />;

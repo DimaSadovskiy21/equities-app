@@ -10,7 +10,7 @@ import { Line } from "react-chartjs-2";
 
 import { getChartCurrentEquitie } from "./utils";
 import { IChartProps } from "./types";
-import { ChartsStyled,  } from "./styles";
+import { ChartWrapper } from "./styles";
 
 ChartJS.register(PointElement, LineElement, CategoryScale, LinearScale);
 
@@ -38,9 +38,9 @@ export const ChartComponent: FC<IChartProps> = ({symbol ,lastSalePrice, lastUpda
   };
 
   return (
-    <ChartsStyled size={size}>
+    <ChartWrapper size={size}>
       <Line data={data} />
-    </ChartsStyled>
+    </ChartWrapper>
   );
 };
 

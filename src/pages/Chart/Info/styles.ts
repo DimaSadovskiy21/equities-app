@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const InfoStyled = styled("div")({
+export const InfoWrapper = styled("div")({
   width: "100%",
   marginTop: '10px',
 });

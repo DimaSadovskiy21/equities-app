@@ -12,7 +12,7 @@ import {
   EquitieChart,
   EquitieOrdinalNumber,
   EquitiePrice,
-  EquitieStyled,
+  EquitieWrapper,
   EquitieSymbol,
 } from "./styles";
 
@@ -34,7 +34,7 @@ export const Equitie: FC<IEquitieProps> = ({
           {...provided.dragHandleProps}
           to={`chart/${symbol}`}
         >
-          <EquitieStyled>
+          <EquitieWrapper>
             <EquitieOrdinalNumber>
               {createOrdinalNumber(index, currentPage)}.
             </EquitieOrdinalNumber>
@@ -49,7 +49,7 @@ export const Equitie: FC<IEquitieProps> = ({
                 {...restProps}
               />
             </EquitieChart>
-          </EquitieStyled>
+          </EquitieWrapper>
         </Link>
       )}
     </Draggable>

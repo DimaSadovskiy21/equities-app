@@ -2,12 +2,12 @@ import { FC } from 'react';
 
 import { getAnalogTime } from 'utils';
 
-import { InfoItems, InfoItem, InfoStyled, InfoTitle } from './styles';
+import { InfoItems, InfoItem, InfoWrapper, InfoTitle } from './styles';
 import { TInfo } from './types';
 import { getCorrectKey } from './utils';
 
 export const Info: FC<TInfo> = (props) => (
-  <InfoStyled>
+  <InfoWrapper>
     <InfoTitle>Equitie info</InfoTitle>
     <InfoItems>
       {Object.entries(props).map((value, index) => {
@@ -31,5 +31,5 @@ export const Info: FC<TInfo> = (props) => (
         }
       })}
     </InfoItems>
-  </InfoStyled>
+  </InfoWrapper>
 );

@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 import {
-  ErrorStyled,
+  ErrorWrapper,
   ErrorDescription,
   ErrorVector,
   ErrorTitle,
@@ -10,9 +10,9 @@ import {
 import { IErrorType } from "./types";
 
 export const Error: FC<IErrorType> = ({ error }) => (
-    <ErrorStyled>
+    <ErrorWrapper>
       <ErrorVector />
       <ErrorTitle>Error!</ErrorTitle>
       <ErrorDescription>{error}</ErrorDescription>
-    </ErrorStyled>
+    </ErrorWrapper>
   );

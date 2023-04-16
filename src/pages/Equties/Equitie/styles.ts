@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const EquitieStyled = styled("div")({
+export const EquitieWrapper = styled("div")({
   display: "grid",
   gridTemplateAreas: `"n s c"
                         "p p c"`,

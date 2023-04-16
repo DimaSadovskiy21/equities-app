@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-export const EquitiesStyled = styled('div')({
+export const EquitiesContainer = styled('div')({
   display: 'flex',
   alignItems: 'center',
   gap: '30px',
 });
 
-export const EquitiesList = styled('div')({
+export const EquitiesWrapper = styled('div')({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
@@ -20,7 +20,7 @@ export const EquitiesList = styled('div')({
   color: 'var(--white)',
 });
 
-export const EquitiesItems = styled('div')({
+export const EquitiesList = styled('div')({
   display: 'flex',
   flexDirection: 'column',
   gap: '5px',

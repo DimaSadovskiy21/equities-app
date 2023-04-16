@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const LoaderStyled = styled('div')({
+export const LoaderWrapper = styled('div')({
   position: 'relative',
   backgroundColor: 'var(--pink)',
   height: '150px',

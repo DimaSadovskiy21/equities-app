@@ -4,7 +4,7 @@ import { useCombinedRefs as refs } from 'ii-react-libraries';
 
 import { Button } from 'components';
 
-import { EquitiesItems, EquitiesStyled, EquitiesList } from './styles';
+import { EquitiesList, EquitiesContainer, EquitiesWrapper } from './styles';
 import { IEquitiesProps } from './types';
 import { Equitie } from './Equitie';
 
@@ -17,23 +17,23 @@ export const Equities: FC<IEquitiesProps> = ({
   handleNextClick,
   scrollRef,
 }) => (
-  <EquitiesStyled>
+  <EquitiesContainer>
     <Button isDisabled={isDisabledPrevButtton} type="❰" handler={handlePrevClick} />
-    <EquitiesList>
+    <EquitiesWrapper>
       <h3>Equities</h3>
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="droppable">
           {(provided) => (
-            <EquitiesItems {...provided.droppableProps} ref={refs(provided.innerRef, scrollRef)}>
+            <EquitiesList {...provided.droppableProps} ref={refs(provided.innerRef, scrollRef)}>
               {currentEquities.map((equitie, index) => (
                 <Equitie key={equitie.symbol} index={index} {...equitie} />
               ))}
               {provided.placeholder}
-            </EquitiesItems>
+            </EquitiesList>
           )}
         </Droppable>
       </DragDropContext>
-    </EquitiesList>
+    </EquitiesWrapper>
     <Button isDisabled={isDisabledNextButtton} type="❱" handler={handleNextClick} />
-  </EquitiesStyled>
+  </EquitiesContainer>
 );
