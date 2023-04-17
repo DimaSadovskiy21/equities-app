@@ -1,3 +1,3 @@
-export { ChartComponent } from "./ChartComponent";
+export { default } from "./ChartComponent";
 
 

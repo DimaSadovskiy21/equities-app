@@ -1,1 +1,1 @@
-export { default } from "./EquitiesContainer";
+export { default } from "./EquitiesListContainer";

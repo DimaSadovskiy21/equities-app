@@ -17,11 +17,12 @@ import {
   toSelector,
 } from "store/reducers/equities";
 
-import { Equities } from "./Equities";
+import EquitiesList from "./EquitiesList";
+import { Message } from "../styles";
 import { MESSAGES } from "../constant";
-import { Message } from '../styles';
 
-const EquitiesContainer = () => {
+
+const EquitiesListContainer = () => {
   const equities = useAppSelector(equitiesSelector);
   const currentEquities = useAppSelector(currentEquitiesSelector);
   const isLoading = useAppSelector(isLoadingSelector);
@@ -72,18 +73,18 @@ const EquitiesContainer = () => {
   return isLoading ? (
     <Loader />
   ) : equities.length ? (
-    <Equities
+    <EquitiesList
+      scrollRef={scrollRef}
       currentEquities={currentEquities}
       isDisabledPrevButtton={isDisabledPrevButtton}
       isDisabledNextButtton={isDisabledNextButtton}
       onDragEnd={onDragEnd}
       handlePrevClick={handlePrevClick}
       handleNextClick={handleNextClick}
-      scrollRef={scrollRef}
     />
   ) : (
     <Message>{MESSAGES.NO_EQUITIES}</Message>
   );
 };
 
-export default EquitiesContainer;
+export default EquitiesListContainer;

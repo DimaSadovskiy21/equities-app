@@ -1,3 +1,3 @@
-export { Equitie } from './Equitie';
+export { default } from './EquitieContainer';
 
 

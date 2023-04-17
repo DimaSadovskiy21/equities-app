@@ -8,29 +8,36 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 
-import { getChartCurrentEquitie } from "./utils";
-import { IChartProps } from "./types";
 import { ChartWrapper } from "./styles";
+import { IChartProps } from "./types";
+import { getChartCurrentEquitie } from "./utils";
 
 ChartJS.register(PointElement, LineElement, CategoryScale, LinearScale);
 
-export const ChartComponent: FC<IChartProps> = ({symbol ,lastSalePrice, lastUpdated, size}) => {
+const ChartComponent: FC<IChartProps> = ({
+  symbol,
+  lastSalePrice,
+  lastUpdated,
+  size,
+}) => {
   const labels = useMemo(
     () => getChartCurrentEquitie(lastSalePrice, lastUpdated),
     [lastSalePrice, lastUpdated]
   );
 
-  const styleChartLabels =
-    size === "small"
-      ? labels.map((label) => label.time).fill("|")
-      : labels.map((label) => label.time);
+  const sticks = new Array(labels.length).fill("|");
+  const time = labels.map((label) => label.time);
+
+  const styleChartLabels = size === "small" ? sticks : time;
+  
+  const prices = labels.map((label) => label.price);
 
   const data = {
     labels: styleChartLabels,
     datasets: [
       {
         label: symbol,
-        data: labels.map((label) => label.price),
+        data: prices,
         borderColor: "rgb(255, 99, 132)",
         backgroundColor: "rgba(255, 99, 132, 0.5)",
       },
@@ -44,3 +51,4 @@ export const ChartComponent: FC<IChartProps> = ({symbol ,lastSalePrice, lastUpda
   );
 };
 
+export default ChartComponent;

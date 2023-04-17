@@ -9,7 +9,7 @@ export const InfoTitle = styled("h4")({
   textAlign: "center",
 });
 
-export const InfoItems = styled("div")({
+export const InfoList = styled("div")({
   display: "grid",
   gridTemplateColumns: "auto auto auto",
   gap: "10px",

@@ -1,35 +1,38 @@
-import { FC } from 'react';
+import { FC } from "react";
 
-import { getAnalogTime } from 'utils';
+import { getAnalogTime } from "utils";
 
-import { InfoItems, InfoItem, InfoWrapper, InfoTitle } from './styles';
-import { TInfo } from './types';
-import { getCorrectKey } from './utils';
+import { InfoList, InfoItem, InfoWrapper, InfoTitle } from "./styles";
+import { TInfo } from "./types";
+import { getCorrectKey } from "./utils";
 
-export const Info: FC<TInfo> = (props) => (
+const Info: FC<TInfo> = (props) => (
   <InfoWrapper>
     <InfoTitle>Equitie info</InfoTitle>
-    <InfoItems>
-      {Object.entries(props).map((value, index) => {
-        const checkIsCorrectKey = value[0] !== 'size' && value[1] !== 'small' && value[1] !== 'large';
-
-        if (value[0].includes('Updated') || value[0].includes('Time')) {
-          value[1] = getAnalogTime(value[1]);
+    <InfoList>
+      {Object.entries(props).map(([key, value], index) => {
+        if (key.includes("Updated") || key.includes("Time")) {
+          value = getAnalogTime(value);
         }
 
-        if (value[0].includes('Price')) {
-          value[1] += '$';
+        if (key.includes("Price")) {
+          value += "$";
         }
+
+        const checkIsCorrectKey =
+          key !== "size" && value !== "small" && value !== "large";
 
         if (checkIsCorrectKey) {
           return (
-            <InfoItem key={`${props.symbol}:${index}`}>
-              <span>{getCorrectKey(value[0])}:</span>
-              <span>{value[1]}</span>
+            <InfoItem key={index}>
+              <span>{getCorrectKey(key)}:</span>
+              <span>{value}</span>
             </InfoItem>
           );
         }
       })}
-    </InfoItems>
+    </InfoList>
   </InfoWrapper>
 );
+
+export default Info;

@@ -1,16 +1,18 @@
-import { FC } from 'react';
+import { FC } from "react";
 
-import { ChartComponent } from 'components';
+import { ChartComponent } from "components";
 
-import { Info } from './Info';
-import { IChartProps } from './types';
-import { ChartWrapper } from './styles';
+import { ChartWrapper, GoBackButtonStyled } from "./styles";
+import { IChartProps } from "./types";
+import Info from "./Info";
 
-export const Chart: FC<IChartProps> = ({ equitie, handler }) => (
+const Chart: FC<IChartProps> = ({ equitie, handleGoBackClick }) => (
   <ChartWrapper>
-    <button onClick={handler}>&#10229;</button>
+    <GoBackButtonStyled onClick={handleGoBackClick}>&#10229;</GoBackButtonStyled>
     <h1>{equitie.symbol}</h1>
     <ChartComponent {...equitie} />
     <Info {...equitie} />
   </ChartWrapper>
 );
+
+export default Chart;

@@ -1,10 +1,12 @@
 import { FC } from "react";
 
-import { ButtonWrapper } from "./styles";
+import { CustomButton } from "./styles";
 import { IButton } from "./types";
 
-export const Button: FC<IButton> = ({ type, handler, isDisabled }) => (
-  <ButtonWrapper disabled={isDisabled} onClick={handler}>
-    {type}
-  </ButtonWrapper>
+const Button: FC<IButton> = ({ children, ...restProps }) => (
+  <CustomButton {...restProps}>
+    {children}
+  </CustomButton>
 );
+
+export default Button;

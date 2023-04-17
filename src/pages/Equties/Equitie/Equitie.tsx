@@ -2,12 +2,8 @@ import { FC } from "react";
 import { Link } from "react-router-dom";
 import { Draggable } from "react-beautiful-dnd";
 
-import { useAppSelector } from "hooks";
-import { ChartComponent } from "components/Chart";
-import { currentPageSelector } from "store/reducers/equities";
+import ChartComponent from "components/Chart";
 
-import { IEquitieProps } from "./types";
-import { createOrdinalNumber } from "./utils";
 import {
   EquitieChart,
   EquitieOrdinalNumber,
@@ -15,43 +11,44 @@ import {
   EquitieWrapper,
   EquitieSymbol,
 } from "./styles";
+import { IEquitieProps } from "./types";
+import { createOrdinalNumber } from "./utils";
 
-export const Equitie: FC<IEquitieProps> = ({
+const Equitie: FC<IEquitieProps> = ({
   symbol,
   lastSalePrice,
   lastUpdated,
   index,
+  currentPage,
   ...restProps
-}) => {
-  const currentPage = useAppSelector(currentPageSelector);
+}) => (
+  <Draggable key={symbol} draggableId={symbol} index={index}>
+    {(provided) => (
+      <Link
+        ref={provided.innerRef}
+        to={`chart/${symbol}`}
+        {...provided.draggableProps}
+        {...provided.dragHandleProps}
+      >
+        <EquitieWrapper>
+          <EquitieOrdinalNumber>
+            {createOrdinalNumber(index, currentPage)}.
+          </EquitieOrdinalNumber>
+          <EquitieSymbol>{symbol}</EquitieSymbol>
+          <EquitiePrice>{lastSalePrice} $</EquitiePrice>
+          <EquitieChart>
+            <ChartComponent
+              size="small"
+              symbol={symbol}
+              lastSalePrice={lastSalePrice}
+              lastUpdated={lastUpdated}
+              {...restProps}
+            />
+          </EquitieChart>
+        </EquitieWrapper>
+      </Link>
+    )}
+  </Draggable>
+);
 
-  return (
-    <Draggable key={symbol} draggableId={symbol} index={index}>
-      {(provided) => (
-        <Link
-          ref={provided.innerRef}
-          {...provided.draggableProps}
-          {...provided.dragHandleProps}
-          to={`chart/${symbol}`}
-        >
-          <EquitieWrapper>
-            <EquitieOrdinalNumber>
-              {createOrdinalNumber(index, currentPage)}.
-            </EquitieOrdinalNumber>
-            <EquitieSymbol>{symbol}</EquitieSymbol>
-            <EquitiePrice>{lastSalePrice} $</EquitiePrice>
-            <EquitieChart>
-              <ChartComponent
-                symbol={symbol}
-                lastSalePrice={lastSalePrice}
-                lastUpdated={lastUpdated}
-                size="small"
-                {...restProps}
-              />
-            </EquitieChart>
-          </EquitieWrapper>
-        </Link>
-      )}
-    </Draggable>
-  );
-};
+export default Equitie;

@@ -5,9 +5,10 @@ import { useAppDispatch, useAppSelector } from 'hooks';
 import { Loader, Error } from 'components';
 import { equitieSelector, errorSelector, getChart, isLoadingSelector } from 'store/reducers/chart';
 
-import { Chart } from './Chart';
-import { MESSAGES } from '../constant';
+import Chart from './Chart';
 import { Message } from '../styles';
+import { MESSAGES } from '../constant';
+
 
 export const ChartContainer = () => {
   const equitie = useAppSelector(equitieSelector);
@@ -31,7 +32,7 @@ export const ChartContainer = () => {
   return isLoading ? (
     <Loader />
   ) : equitie.symbol ? (
-    <Chart equitie={equitie} handler={handleGoBackClick} />
+    <Chart equitie={equitie} handleGoBackClick={handleGoBackClick} />
   ) : (
     <Message>{MESSAGES.NO_EQUITIE}</Message>
   );

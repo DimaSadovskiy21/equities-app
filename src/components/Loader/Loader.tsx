@@ -1,3 +1,5 @@
-import { LoaderWrapper } from "./styles";
+import { Loader as CustomLoader } from "./styles";
 
-export const Loader = () => <LoaderWrapper />;
+const Loader = () => <CustomLoader />;
+
+export default Loader;
