@@ -12,8 +12,7 @@ export const getChartCurrentEquitie = (
   let startTime = lastUpdated;
   
   for (let i = 0; i < steps; i++) {
-    let price =
-      lastSalePrice + (Math.random() < 0.5 ? -1 : 1) * Math.random() * stepSize;
+    let price = lastSalePrice + (Math.random() < 0.5 ? -1 : 1) * Math.random() * stepSize;
     startTime += timeStep;
     data.push({
       time: getAnalogTime(startTime),

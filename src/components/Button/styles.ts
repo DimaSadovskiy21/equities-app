@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CustomButton = styled("button")({
-    height: '100%',
+    // height: '100%',
     border: 'none',
     background: 'none',
     cursor: 'pointer',
@@ -12,7 +12,6 @@ export const CustomButton = styled("button")({
         transform: 'scale(1.2)',
     },
     ':disabled': {
-        pointerEvents: 'none',
         opacity: '0.3',
     }
 });

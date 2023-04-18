@@ -1,3 +1,5 @@
 import { IEquitie } from "types";
 
-export type TInfo = IEquitie;
+export type TInfoProps ={
+    equitie: IEquitie
+} ;
